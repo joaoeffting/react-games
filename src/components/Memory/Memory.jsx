@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import SelectDeck from "./SelectDeck";
 import styles from "./Memory.module.css";
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
@@ -14,11 +15,6 @@ const Memory = () => {
   const [selectedIds, setSelectedIds] = useState([]);
   const [correctItemsIds, setCorrectItemsIds] = useState([]);
   const deckNumber = deck.length;
-
-  useEffect(() => {
-    const selectedDeck = getDeckById("pokemon");
-    setDeck(shuffleArray(generateDeck(selectedDeck)));
-  }, []);
 
   useEffect(() => {
     if (selectedIds.length === 2) {
@@ -36,8 +32,16 @@ const Memory = () => {
     if (selectedIds.length < 2) setSelectedIds([...selectedIds, itemId]);
   };
 
+  const onSelectDeck = (deckId) => {
+    const selectedDeck = getDeckById(deckId);
+    setDeck(shuffleArray(generateDeck(selectedDeck)));
+  };
+
+  if (deck.length === 0) return <SelectDeck onSelectDeck={onSelectDeck} />;
+
   return (
     <div className={styles["container"]}>
+      <a href="/memory">Select a new deck</a>
       <div
         className={styles["memory-game"]}
         style={{ width: `${containerWidth}px`, height: `${containerHeight}px` }}

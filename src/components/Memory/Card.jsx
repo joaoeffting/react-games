@@ -11,6 +11,9 @@ const Card = ({ item, sizes, isItemSelected, onItemClick }) => {
       className={styles["card-container"]}
       style={{
         width: cardWidth,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
       }}
       onClick={() => onItemClick(item.id)}
     >
