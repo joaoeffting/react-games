@@ -1,32 +1,39 @@
+import AbraImage from "../../../../public/pokemon/abra.png";
+import KadabraImage from "../../../../public/pokemon/kadabra.png";
+import AlakazanImage from "../../../../public/pokemon/alakazan.png";
+import GastlyImage from "../../../../public/pokemon/gastly.png";
+import HauterImage from "../../../../public/pokemon/haunter.png";
+import GengarImage from "../../../../public/pokemon/gengar.png";
+
 export const POKEMON_DECK = [
   {
     id: 1,
     name: "Abra",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
+    src: AbraImage,
   },
   {
     id: 2,
     name: "Kadabra",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png",
+    src: KadabraImage,
   },
   {
     id: 3,
     name: "Alakazam",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
+    src: AlakazanImage,
   },
   {
     id: 4,
     name: "Gastly",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png",
+    src: GastlyImage,
   },
   {
     id: 5,
     name: "Haunter",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png",
+    src: HauterImage,
   },
   {
     id: 6,
     name: "Gengar",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
+    src: GengarImage,
   },
 ];

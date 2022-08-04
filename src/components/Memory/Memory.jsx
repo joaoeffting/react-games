@@ -30,7 +30,7 @@ const Memory = () => {
         setSelectedIds([]);
       }, 1000);
     }
-  }, [selectedIds, correctItemsIds]);
+  }, [selectedIds, correctItemsIds, deckNumber]);
 
   const onItemClick = (itemId) => {
     if (selectedIds.length < 2) setSelectedIds([...selectedIds, itemId]);
