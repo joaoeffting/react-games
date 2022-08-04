@@ -3,52 +3,21 @@ import Card from "./Card";
 import styles from "./Memory.module.css";
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
-
-const DECK = [
-  {
-    id: 1,
-    name: "Abra",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/63.png",
-  },
-  {
-    id: 2,
-    name: "Kadabra",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/64.png",
-  },
-  {
-    id: 3,
-    name: "Alakazam",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/65.png",
-  },
-  {
-    id: 4,
-    name: "Gastly",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/92.png",
-  },
-  {
-    id: 5,
-    name: "Haunter",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/93.png",
-  },
-  {
-    id: 6,
-    name: "Gengar",
-    src: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png",
-  },
-];
+import getDeckById from "./getDeckById";
 
 const columnsNumber = 4;
 const containerWidth = 600;
 const containerHeight = 400;
-const deckNumber = DECK.length * 2;
 
 const Memory = () => {
   const [deck, setDeck] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
   const [correctItemsIds, setCorrectItemsIds] = useState([]);
+  const deckNumber = deck.length;
 
   useEffect(() => {
-    setDeck(shuffleArray(generateDeck(DECK)));
+    const selectedDeck = getDeckById("pokemon");
+    setDeck(shuffleArray(generateDeck(selectedDeck)));
   }, []);
 
   useEffect(() => {
