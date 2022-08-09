@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Link from "@mui/material/Link";
 import { pages } from "./pages";
 import Logo from "../Logo/Logo";
 
@@ -65,9 +66,9 @@ const MenuMobile = ({ appName }: NavBarProps) => {
             display: { xs: "block", md: "none" },
           }}
         >
-          {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">{page}</Typography>
+          {pages.map(({ name, path }) => (
+            <MenuItem component={"a"} key={name} href={path}>
+              <Typography textAlign="center">{name}</Typography>
             </MenuItem>
           ))}
         </Menu>

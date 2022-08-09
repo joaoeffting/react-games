@@ -12,13 +12,13 @@ const MenuDesktop = ({ appName }: NavBarProps) => {
   return (
     <>
       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-        {pages.map((page) => (
+        {pages.map(({ name, path }) => (
           <Button
-            key={page}
-            href="/books"
+            key={name}
+            href={path}
             sx={{ my: 2, color: "white", display: "block" }}
           >
-            {page}
+            {name}
           </Button>
         ))}
       </Box>

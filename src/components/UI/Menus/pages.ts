@@ -1,1 +1,5 @@
-export const pages = ["Home", "Books", "About"];
+export const pages = [
+  { name: "Home", path: "/" },
+  { name: "Games", path: "/games" },
+  { name: "About Me", path: "/about" },
+];
