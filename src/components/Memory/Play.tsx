@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ImageList from "@mui/material/ImageList";
 import Link from "next/link";
 import Card from "./Card";
 
@@ -47,13 +48,8 @@ const Play = ({ deckId }: PlayProps) => {
       <Link href="/memory">
         <a>Select a new deck</a>
       </Link>
-      <div
-        className={styles["memory-game"]}
-        style={{
-          width: `${containerWidth}px`,
-          height: `${containerHeight}px`,
-        }}
-      >
+
+      <ImageList gap={20} cols={3}>
         {deck.map((item) => {
           const isItemSelected =
             selectedIds.includes(item.id) || correctItemsIds.includes(item.id);
@@ -71,7 +67,7 @@ const Play = ({ deckId }: PlayProps) => {
             />
           );
         })}
-      </div>
+      </ImageList>
     </div>
   );
 };
