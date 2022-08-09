@@ -3,10 +3,15 @@ import Image from "next/image";
 import PokemonLogo from "../../../public/pokemon-logo.png";
 import DigimonLogo from "../../../public/digimon-logo.png";
 
-const Deck = ({ url, itemId, onSelectDeck }) => {
+type DeckProps = {
+  url: any;
+  itemId: string;
+};
+
+const Deck = ({ url, itemId }: DeckProps) => {
   return (
     <div
-      onClick={() => onSelectDeck(itemId)}
+      onClick={() => (window.location.href = `/memory/${itemId}`)}
       style={{
         display: "flex",
         alignItems: "center",
@@ -23,11 +28,11 @@ const Deck = ({ url, itemId, onSelectDeck }) => {
   );
 };
 
-const SelectDeck = ({ onSelectDeck }) => {
+const SelectDeck = () => {
   return (
     <div style={{ display: "flex" }}>
-      <Deck url={PokemonLogo} itemId="pokemon" onSelectDeck={onSelectDeck} />
-      <Deck url={DigimonLogo} itemId="digimon" onSelectDeck={onSelectDeck} />
+      <Deck url={PokemonLogo} itemId="pokemon" />
+      <Deck url={DigimonLogo} itemId="digimon" />
     </div>
   );
 };

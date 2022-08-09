@@ -1,9 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
-const GameRouter = ({ url, name }) => {
+type GameRouterProps = {
+  path: string;
+  name: string;
+};
+
+const GameRouter = ({ path, name }: GameRouterProps) => {
   return (
-    <a href={url}>
+    <a href={path}>
       <div
         style={{
           display: "flex",

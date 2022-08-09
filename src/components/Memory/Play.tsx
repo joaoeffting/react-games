@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
-import SelectDeck from "./SelectDeck";
-import styles from "./Memory.module.css";
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
-import getDeckById from "./getDeckById";
+import getDeckById, { DeckType } from "./getDeckById";
+import styles from "./Memory.module.css";
+
+type PlayProps = {
+  deckId: string;
+};
 
 const columnsNumber = 4;
 const containerWidth = 600;
 const containerHeight = 400;
 
-const Memory = () => {
-  const [deck, setDeck] = useState([]);
-  const [selectedIds, setSelectedIds] = useState([]);
-  const [correctItemsIds, setCorrectItemsIds] = useState([]);
+const Play = ({ deckId }: PlayProps) => {
+  const [deck, setDeck] = useState<DeckType>([]);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [correctItemsIds, setCorrectItemsIds] = useState<number[]>([]);
   const deckNumber = deck.length;
+
+  useEffect(() => {
+    const selectedDeck = getDeckById(deckId);
+    setDeck(shuffleArray(generateDeck(selectedDeck)));
+  }, []);
 
   useEffect(() => {
     if (selectedIds.length === 2) {
@@ -28,23 +36,18 @@ const Memory = () => {
     }
   }, [selectedIds, correctItemsIds, deckNumber]);
 
-  const onItemClick = (itemId) => {
+  const onItemClick = (itemId: number) => {
     if (selectedIds.length < 2) setSelectedIds([...selectedIds, itemId]);
   };
-
-  const onSelectDeck = (deckId) => {
-    const selectedDeck = getDeckById(deckId);
-    setDeck(shuffleArray(generateDeck(selectedDeck)));
-  };
-
-  if (deck.length === 0) return <SelectDeck onSelectDeck={onSelectDeck} />;
-
   return (
     <div className={styles["container"]}>
       <a href="/memory">Select a new deck</a>
       <div
         className={styles["memory-game"]}
-        style={{ width: `${containerWidth}px`, height: `${containerHeight}px` }}
+        style={{
+          width: `${containerWidth}px`,
+          height: `${containerHeight}px`,
+        }}
       >
         {deck.map((item) => {
           const isItemSelected =
@@ -68,4 +71,4 @@ const Memory = () => {
   );
 };
 
-export default Memory;
+export default Play;
