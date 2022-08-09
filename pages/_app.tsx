@@ -6,10 +6,12 @@ import "@fontsource/roboto/700.css";
 
 import { NavBar } from "../src/components/UI";
 
-function MyApp({ Component, pageProps }) {
+import type { AppProps } from "next/app";
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <NavBar />
+      <NavBar appName="React Games" />
       <Component {...pageProps} />
     </>
   );
