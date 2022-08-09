@@ -1,8 +1,8 @@
 import React from "react";
 import Memory from "../../src/components/Memory/Memory";
 
-const memory = () => {
+const MemoryPage = () => {
   return <Memory />;
 };
 
-export default memory;
+export default MemoryPage;
