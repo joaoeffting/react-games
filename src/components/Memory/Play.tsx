@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import Card from "./Card";
+
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
 import getDeckById, { DeckType } from "./getDeckById";
+
 import styles from "./Memory.module.css";
 
 type PlayProps = {
@@ -41,7 +44,9 @@ const Play = ({ deckId }: PlayProps) => {
   };
   return (
     <div className={styles["container"]}>
-      <a href="/memory">Select a new deck</a>
+      <Link href="/memory">
+        <a>Select a new deck</a>
+      </Link>
       <div
         className={styles["memory-game"]}
         style={{
