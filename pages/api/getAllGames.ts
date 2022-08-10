@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectToDatabase } from "../../lib/mongodb";
 
-export default async function handler(
+export default async function getAllGames(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   let { db } = await connectToDatabase();
 
-  const blogs = await db.collection("games").find().toArray();
+  const games = await db.collection("games").find().toArray();
 
-  res.status(200).json({ blogs });
+  res.status(200).json(games);
 }

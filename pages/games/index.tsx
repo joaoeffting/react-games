@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import GameRouter from "../../src/components/GameRouter";
 
-const gameList = [
-  {
-    id: 1,
-    name: "Memory Game",
-    path: "/memory",
-  },
-];
-
 const GameList = () => {
+  const [games, setGames] = React.useState([]);
+  useEffect(() => {
+    const getAllGamesApi = async () => {
+      const response = await fetch("/api/getAllGames");
+      const games = await response.json();
+      setGames(games);
+    };
+    getAllGamesApi();
+  }, []);
+
+  if (games.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Container sx={{ marginTop: "20px" }}>
-      {gameList.map(({ id, name, path }) => (
-        <GameRouter key={id} path={path} name={name} />
+      {games.map(({ _id, name, path, image }) => (
+        <GameRouter key={_id} path={path} name={name} image={image} />
       ))}
     </Container>
   );

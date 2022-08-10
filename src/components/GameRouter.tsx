@@ -4,9 +4,10 @@ import Image from "next/image";
 type GameRouterProps = {
   path: string;
   name: string;
+  image: string;
 };
 
-const GameRouter = ({ path, name }: GameRouterProps) => {
+const GameRouter = ({ path, name, image }: GameRouterProps) => {
   return (
     <a href={path}>
       <div
@@ -17,7 +18,7 @@ const GameRouter = ({ path, name }: GameRouterProps) => {
           height: "150px",
         }}
       >
-        <Image src="/memory.png" alt="memory game" width="100%" height="100%" />
+        <Image src={image} alt="memory game" width="100%" height="100%" />
         <div style={{ textAlign: "center" }}>{name}</div>
       </div>
     </a>
