@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ImageList from "@mui/material/ImageList";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+
 import Link from "next/link";
 import Card from "./Card";
 
@@ -43,13 +46,17 @@ const Play = ({ deckId }: PlayProps) => {
   const onItemClick = (itemId: number) => {
     if (selectedIds.length < 2) setSelectedIds([...selectedIds, itemId]);
   };
+
+  const theme = useTheme();
+  const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div className={styles["container"]}>
       <Link href="/memory">
         <a>Select a new deck</a>
       </Link>
 
-      <ImageList gap={20} cols={3}>
+      <ImageList gap={20} cols={matchDownMd ? 3 : 6}>
         {deck.map((item) => {
           const isItemSelected =
             selectedIds.includes(item.id) || correctItemsIds.includes(item.id);
