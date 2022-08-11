@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import ImageList from "@mui/material/ImageList";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 import Link from "next/link";
 import Card from "./Card";
+
+import LinkMUI from "@mui/material/Link";
+import { Breadcrumbs } from "../UI";
 
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
@@ -52,9 +56,15 @@ const Play = ({ deckId }: PlayProps) => {
 
   return (
     <div className={styles["container"]}>
-      <Link href="/memory">
-        <a>Select a new deck</a>
-      </Link>
+      <Breadcrumbs>
+        <LinkMUI underline="hover" color="inherit" href="/games">
+          All Games
+        </LinkMUI>
+        <LinkMUI underline="hover" color="inherit" href="/memory">
+          Select a Deck
+        </LinkMUI>
+        <Typography color="text.primary">Memory Game</Typography>
+      </Breadcrumbs>
 
       <ImageList gap={20} cols={matchDownMd ? 3 : 6}>
         {deck.map((item) => {
