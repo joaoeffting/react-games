@@ -9,7 +9,7 @@ type GameRouterProps = {
 
 const GameRouter = ({ path, name, image }: GameRouterProps) => {
   return (
-    <a href={path}>
+    <a data-test-name={`${name}-link`} href={path}>
       <div
         style={{
           display: "flex",

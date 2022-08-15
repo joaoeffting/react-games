@@ -14,6 +14,7 @@ type DeckProps = {
 const Deck = ({ url, itemId }: DeckProps) => {
   return (
     <div
+      data-test-name={`${itemId}-link`}
       onClick={() => (window.location.href = `/memory/${itemId}`)}
       style={{
         display: "flex",
