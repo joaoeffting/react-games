@@ -1,12 +1,8 @@
 import { SELECTORS } from "../../selectors";
+import { VIEW_PORT_MOBILE } from "../../constants";
 
 const { homeLinkMobile, gamesLinkMobile, aboutLinkMobile, hamburgerMenu } =
   SELECTORS;
-
-const VIEW_PORT_MOBILE = {
-  width: 414,
-  height: 896,
-};
 
 describe("Navigation Mobile", () => {
   beforeEach(() => {
