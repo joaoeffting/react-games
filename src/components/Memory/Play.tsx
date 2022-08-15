@@ -24,10 +24,6 @@ type PlayProps = {
   deckId: string;
 };
 
-const columnsNumber = 4;
-const containerWidth = 600;
-const containerHeight = 400;
-
 const userTriesConst = 10;
 
 const Play = ({ deckId }: PlayProps) => {
@@ -35,18 +31,17 @@ const Play = ({ deckId }: PlayProps) => {
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [correctItemsIds, setCorrectItemsIds] = useState<number[]>([]);
   const [userTries, setUserTries] = useState<number>(userTriesConst);
-  const deckNumber = deck.length;
 
   useEffect(() => {
     const selectedDeck = getDeckById(deckId);
     setDeck(shuffleArray(generateDeck(selectedDeck)));
-  }, []);
+  }, [deckId]);
 
   useEffect(() => {
     if (selectedIds.length === 2) {
       setTimeout(() => {
         const sortedArray = selectedIds.sort((a, b) => a - b);
-        if (sortedArray[0] + deckNumber === sortedArray[1]) {
+        if (sortedArray[0] + deck.length === sortedArray[1]) {
           setCorrectItemsIds([...correctItemsIds, ...selectedIds]);
         } else {
           setUserTries((prev) => prev - 1);
@@ -54,7 +49,7 @@ const Play = ({ deckId }: PlayProps) => {
         setSelectedIds([]);
       }, 1000);
     }
-  }, [selectedIds, correctItemsIds, deckNumber]);
+  }, [selectedIds, correctItemsIds, deck.length]);
 
   const onItemClick = (itemId: number) => {
     const isItemSelected = selectedIds.includes(itemId);
@@ -71,7 +66,6 @@ const Play = ({ deckId }: PlayProps) => {
 
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
-
   const isGameFinished = correctItemsIds.length === deck.length;
 
   return (
@@ -109,11 +103,6 @@ const Play = ({ deckId }: PlayProps) => {
               item={item}
               isItemSelected={isItemSelected}
               onItemClick={onItemClick}
-              sizes={{
-                containerWidth,
-                containerHeight,
-                columnsNumber,
-              }}
             />
           );
         })}

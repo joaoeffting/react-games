@@ -6,18 +6,11 @@ import questionImage from "../../../public/question.png";
 
 type CardProps = {
   item: DeckType;
-  sizes: {
-    containerWidth: number;
-    containerHeight: number;
-    columnsNumber: number;
-  };
   isItemSelected: boolean;
   onItemClick: (id: number) => void;
 };
 
-const Card = ({ item, sizes, isItemSelected, onItemClick }: CardProps) => {
-  const { containerWidth, columnsNumber } = sizes;
-  const cardWidth = containerWidth / columnsNumber - 5;
+const Card = ({ item, isItemSelected, onItemClick }: CardProps) => {
   return (
     <ImageListItem onClick={() => onItemClick(item.id)}>
       <Image
