@@ -12,7 +12,7 @@ import { Breadcrumbs } from "../UI";
 
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
-import getDeckById, { DeckType } from "./getDeckById";
+import getDeckById, { DeckType } from "../../utils/getDeckById";
 
 import styles from "./Memory.module.css";
 

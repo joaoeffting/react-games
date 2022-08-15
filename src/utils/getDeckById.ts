@@ -1,5 +1,5 @@
-import { POKEMON_DECK } from "./decks/pokemon";
-import { DIGIMON_DECK } from "./decks/digimon";
+import { POKEMON_DECK } from "../components/Memory/decks/pokemon";
+import { DIGIMON_DECK } from "../components/Memory/decks/digimon";
 
 export type DeckType = {
   id: number;
