@@ -40,6 +40,7 @@ const MenuMobile = ({ appName }: NavBarProps) => {
       />
       <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
         <IconButton
+          data-test-name="hamburger-menu"
           size="large"
           aria-label="account of current user"
           aria-controls="menu-appbar"
@@ -67,7 +68,12 @@ const MenuMobile = ({ appName }: NavBarProps) => {
           }}
         >
           {pages.map(({ name, path }) => (
-            <MenuItem component={"a"} key={name} href={path}>
+            <MenuItem
+              data-test-name={`${name}-link-mobile`}
+              component={"a"}
+              key={name}
+              href={path}
+            >
               <Typography textAlign="center">{name}</Typography>
             </MenuItem>
           ))}

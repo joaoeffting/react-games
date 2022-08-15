@@ -14,6 +14,7 @@ const MenuDesktop = ({ appName }: NavBarProps) => {
       <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
         {pages.map(({ name, path }) => (
           <Button
+            data-test-name={`${name}-link`}
             key={name}
             href={path}
             sx={{ my: 2, color: "white", display: "block" }}
