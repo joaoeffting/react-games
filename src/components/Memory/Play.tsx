@@ -49,7 +49,9 @@ const Play = ({ deckId }: PlayProps) => {
   }, [selectedIds, correctItemsIds, deckNumber]);
 
   const onItemClick = (itemId: number) => {
-    if (selectedIds.length < 2) setSelectedIds([...selectedIds, itemId]);
+    const isItemSelected = selectedIds.includes(itemId);
+    if (selectedIds.length < 2 && !isItemSelected)
+      setSelectedIds([...selectedIds, itemId]);
   };
 
   const theme = useTheme();
