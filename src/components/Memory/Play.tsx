@@ -15,8 +15,6 @@ import { generateDeck } from "../../utils/generateDeck";
 import getDeckById from "../../utils/getDeckById";
 import { DeckType } from "../../types/Deck.types";
 
-import styles from "./Memory.module.css";
-
 type PlayProps = {
   deckId: string;
 };
@@ -58,7 +56,14 @@ const Play = ({ deckId }: PlayProps) => {
   const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <div className={styles["container"]}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <Breadcrumbs>
         <LinkMUI underline="hover" color="inherit" href="/games">
           All Games
