@@ -12,7 +12,8 @@ import { Breadcrumbs } from "../UI";
 
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
-import getDeckById, { DeckType } from "../../utils/getDeckById";
+import getDeckById from "../../utils/getDeckById";
+import { DeckType } from "../../types/Deck.types";
 
 import styles from "./Memory.module.css";
 
@@ -25,7 +26,7 @@ const containerWidth = 600;
 const containerHeight = 400;
 
 const Play = ({ deckId }: PlayProps) => {
-  const [deck, setDeck] = useState<DeckType>([]);
+  const [deck, setDeck] = useState<DeckType[]>([]);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [correctItemsIds, setCorrectItemsIds] = useState<number[]>([]);
   const deckNumber = deck.length;

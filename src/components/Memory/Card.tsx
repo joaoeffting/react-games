@@ -1,10 +1,21 @@
 import React from "react";
 import ImageListItem from "@mui/material/ImageListItem";
 import Image from "next/image";
-import styles from "./Card.module.css";
+import { DeckType } from "../../types/Deck.types";
 import questionImage from "../../../public/question.png";
 
-const Card = ({ item, sizes, isItemSelected, onItemClick }) => {
+type CardProps = {
+  item: DeckType;
+  sizes: {
+    containerWidth: number;
+    containerHeight: number;
+    columnsNumber: number;
+  };
+  isItemSelected: boolean;
+  onItemClick: (id: number) => void;
+};
+
+const Card = ({ item, sizes, isItemSelected, onItemClick }: CardProps) => {
   const { containerWidth, columnsNumber } = sizes;
   const cardWidth = containerWidth / columnsNumber - 5;
   return (

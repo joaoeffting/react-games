@@ -1,22 +1,14 @@
 import { POKEMON_DECK } from "../components/Memory/decks/pokemon";
 import { DIGIMON_DECK } from "../components/Memory/decks/digimon";
 
-export type DeckType = {
-  id: number;
-  name: string;
-  src: any;
-}[];
-
-export type DeckListType = {
-  [key: string]: DeckType;
-};
+import { DeckListType, DeckType } from "../types/Deck.types";
 
 const DECK_LIST: DeckListType = {
   pokemon: POKEMON_DECK,
   digimon: DIGIMON_DECK,
 };
 
-const getDeckById = (id: string): DeckType => {
+const getDeckById = (id: string): DeckType[] => {
   return DECK_LIST[id];
 };
 
