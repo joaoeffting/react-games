@@ -1,7 +1,7 @@
 export type DeckType = {
   id: number;
   name: string;
-  src: any;
+  image: any;
 };
 
 export type DeckListType = {

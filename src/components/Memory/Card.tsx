@@ -14,7 +14,7 @@ const Card = ({ item, isItemSelected, onItemClick }: CardProps) => {
   return (
     <ImageListItem onClick={() => onItemClick(item.id)}>
       <Image
-        src={isItemSelected ? item.src : questionImage}
+        src={isItemSelected ? item.image : questionImage}
         alt={item.name}
         width="100%"
         height="100%"

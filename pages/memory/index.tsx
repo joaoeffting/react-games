@@ -6,12 +6,12 @@ import type { DecksType } from "../../src/types/DecksList.type";
 const DecksList = () => {
   const [decks, setDecks] = useState<DecksType[]>([]);
   useEffect(() => {
-    const getAllGamesApi = async () => {
+    const getAllDecksApi = async () => {
       const response = await fetch("/api/getAllDecks");
       const decks = await response.json();
       setDecks(decks);
     };
-    getAllGamesApi();
+    getAllDecksApi();
   }, []);
 
   if (decks.length === 0) {

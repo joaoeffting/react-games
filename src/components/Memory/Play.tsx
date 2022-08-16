@@ -11,11 +11,11 @@ import { Breadcrumbs } from "../UI";
 import Card from "./Card";
 import Score from "../Score";
 import GameEnded from "../GameEnded/GameEnded";
+import Loading from "../UI/Loading";
 
 //utils
 import { shuffleArray } from "../../utils/shuffleArray";
 import { generateDeck } from "../../utils/generateDeck";
-import getDeckById from "../../utils/getDeckById";
 
 // types
 import { DeckType } from "../../types/Deck.types";
@@ -33,8 +33,12 @@ const Play = ({ deckId }: PlayProps) => {
   const [userTries, setUserTries] = useState<number>(userTriesConst);
 
   useEffect(() => {
-    const selectedDeck = getDeckById(deckId);
-    setDeck(shuffleArray(generateDeck(selectedDeck)));
+    const getDeckByIdApi = async () => {
+      const response = await fetch(`/api/getDeckById/${deckId}`);
+      const deck = await response.json();
+      setDeck(shuffleArray(generateDeck(deck)));
+    };
+    getDeckByIdApi();
   }, [deckId]);
 
   useEffect(() => {
@@ -67,6 +71,10 @@ const Play = ({ deckId }: PlayProps) => {
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
   const isGameFinished = correctItemsIds.length === deck.length;
+
+  if (deck.length === 0) {
+    return <Loading />;
+  }
 
   return (
     <div
