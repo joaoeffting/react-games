@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Memory from "../../src/components/Memory/Memory";
-
+import Loading from "../../src/components/UI/Loading";
 import type { DecksType } from "../../src/types/DecksList.type";
 
 const MemoryPage = () => {
@@ -13,6 +13,11 @@ const MemoryPage = () => {
     };
     getAllGamesApi();
   }, []);
+
+  if (decks.length === 0) {
+    return <Loading />;
+  }
+
   return <Memory decks={decks} />;
 };
 

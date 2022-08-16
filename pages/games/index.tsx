@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import GameRouter from "../../src/components/GameRouter";
+import Loading from "../../src/components/UI/Loading";
 
 const GameList = () => {
   const [games, setGames] = React.useState([]);
@@ -14,7 +15,7 @@ const GameList = () => {
   }, []);
 
   if (games.length === 0) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
