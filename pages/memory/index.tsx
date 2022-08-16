@@ -3,7 +3,7 @@ import Memory from "../../src/components/Memory/Memory";
 import Loading from "../../src/components/UI/Loading";
 import type { DecksType } from "../../src/types/DecksList.type";
 
-const MemoryPage = () => {
+const DecksList = () => {
   const [decks, setDecks] = useState<DecksType[]>([]);
   useEffect(() => {
     const getAllGamesApi = async () => {
@@ -21,4 +21,4 @@ const MemoryPage = () => {
   return <Memory decks={decks} />;
 };
 
-export default MemoryPage;
+export default DecksList;
