@@ -40,7 +40,13 @@ const Memory = ({ decks }: { decks: DecksType[] }) => {
         </Link>
         <Typography color="text.primary">Select a Deck</Typography>
       </Breadcrumbs>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         {decks.map(({ image, deck_name }) => {
           return <Deck key={deck_name} image={image} deckName={deck_name} />;
         })}
