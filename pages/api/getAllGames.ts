@@ -9,5 +9,5 @@ export default async function getAllGames(
 
   const games = await db.collection("games").find().toArray();
 
-  res.status(200).json(games);
+  return res.status(200).json(games);
 }

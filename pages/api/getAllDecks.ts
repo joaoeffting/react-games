@@ -9,5 +9,5 @@ export default async function getAllGames(
 
   const decks = await db.collection("decks").find().toArray();
 
-  res.status(200).json(decks);
+  return res.status(200).json(decks);
 }
