@@ -6,8 +6,8 @@ export default async function getAllGames(
   res: NextApiResponse
 ) {
   let { db } = await connectToDatabase();
-  const { id } = req.query;
-  const deck = await db.collection("decks").findOne({ deck_name: id });
+  // const { id } = req.query;
+  const deck = await db.collection("decks").findOne({ deck_name: "pokemon" });
 
   if (deck) res.status(200).json(deck.deck);
 
